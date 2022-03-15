@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b6d52f30-5cb3-404e-a73a-a7ead08fa008": {
+      "ProjectGuid": "b6d52f30-5cb3-404e-a73a-a7ead08fa008",
+      "DisplayName": "EventTicketingSystemZaven_Api",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "795ed155-8ef5-4180-a196-6c312731b7d4": {
+      "ProjectGuid": "795ed155-8ef5-4180-a196-6c312731b7d4",
+      "DisplayName": "EventTicketingSystemZaven_CommandProcessor",
+      "ColorIndex": 1
+    },
+    "7d6b1a62-211b-4b15-b4cf-daa0adba3d50": {
+      "ProjectGuid": "7d6b1a62-211b-4b15-b4cf-daa0adba3d50",
+      "DisplayName": "EventTicketingSystemZaven_CommanProcessor",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

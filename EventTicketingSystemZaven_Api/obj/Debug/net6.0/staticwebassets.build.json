@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "x+G5SBryslBFqVOAoQgnGZ8ReFRiJOQdEfmNkLFgZl4=",
+  "Source": "EventTicketingSystemZaven_Api",
+  "BasePath": "_content/EventTicketingSystemZaven_Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
