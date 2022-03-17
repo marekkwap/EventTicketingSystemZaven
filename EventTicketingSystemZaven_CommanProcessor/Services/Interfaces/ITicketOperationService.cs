@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace EventTicketingSystemZaven_CommanProcessor.Services.Interfaces;
+namespace EventTicketingSystemZaven_CommandProcessor.Services.Interfaces;
 
 public interface ITicketOperationService
 {

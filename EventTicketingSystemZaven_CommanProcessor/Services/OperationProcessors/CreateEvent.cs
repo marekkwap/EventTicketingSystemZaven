@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Text.Json;
 using System.Threading.Tasks;
-using EventTicketingSystemZaven_CommanProcessor.Services.Interfaces;
+using EventTicketingSystemZaven_CommandProcessor.Services.Interfaces;
 using EventTicketingSystemZaven_Shared;
 using EventTicketingSystemZaven_Shared.Models;
 using EventTicketingSystemZaven_Shared.Services;
 using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Extensions.Logging;
 
-namespace EventTicketingSystemZaven_CommanProcessor.Services.OperationProcessors
+namespace EventTicketingSystemZaven_CommandProcessor.Services.OperationProcessors
 {
     internal class CreateEvent : IOperationProcessor
     {

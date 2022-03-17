@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace EventTicketingSystemZaven_CommanProcessor.Services;
+namespace EventTicketingSystemZaven_CommandProcessor.Services;
 
 public interface IEventProcessingService
 {

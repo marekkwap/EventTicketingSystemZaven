@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using EventTicketingSystemZaven_CommanProcessor.Services.Interfaces;
+using EventTicketingSystemZaven_CommandProcessor.Services.Interfaces;
 using EventTicketingSystemZaven_Shared.Models;
 
-namespace EventTicketingSystemZaven_CommanProcessor.Services;
+namespace EventTicketingSystemZaven_CommandProcessor.Services;
 
 public class EventProcessingService : IEventProcessingService
 {

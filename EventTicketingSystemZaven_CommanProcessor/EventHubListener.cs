@@ -6,13 +6,13 @@ using Azure.Messaging.EventHubs;
 using Azure.Messaging.EventHubs.Consumer;
 using Azure.Messaging.EventHubs.Processor;
 using Azure.Storage.Blobs;
-using EventTicketingSystemZaven_CommanProcessor.Models;
-using EventTicketingSystemZaven_CommanProcessor.Services;
+using EventTicketingSystemZaven_CommandProcessor.Models;
+using EventTicketingSystemZaven_CommandProcessor.Services;
 using EventTicketingSystemZaven_Shared.Models;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace EventTicketingSystemZaven_CommanProcessor;
+namespace EventTicketingSystemZaven_CommandProcessor;
 
 public class EventHubListener : BackgroundService
 {

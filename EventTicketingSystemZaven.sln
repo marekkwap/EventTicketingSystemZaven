@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventTicketingSystemZaven_Api", "EventTicketingSystemZaven_Api\EventTicketingSystemZaven_Api.csproj", "{B6D52F30-5CB3-404E-A73A-A7EAD08FA008}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventTicketingSystemZaven_CommanProcessor", "EventTicketingSystemZaven_CommanProcessor\EventTicketingSystemZaven_CommanProcessor.csproj", "{7D6B1A62-211B-4B15-B4CF-DAA0ADBA3D50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventTicketingSystemZaven_CommandProcessor", "EventTicketingSystemZaven_CommanProcessor\EventTicketingSystemZaven_CommandProcessor.csproj", "{7D6B1A62-211B-4B15-B4CF-DAA0ADBA3D50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventTicketingSystemZaven_Shared", "EventTicketingSystemZaven_Shared\EventTicketingSystemZaven_Shared.csproj", "{A4E2383C-875C-4BC7-93AE-195656BD3935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventTicketingSystemZaven_Shared", "EventTicketingSystemZaven_Shared\EventTicketingSystemZaven_Shared.csproj", "{A4E2383C-875C-4BC7-93AE-195656BD3935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using EventTicketingSystemZaven_Api.Services;
-using EventTicketingSystemZaven_CommanProcessor.Models;
+using EventTicketingSystemZaven_CommandProcessor.Models;
 using EventTicketingSystemZaven_Shared.Models;
 using EventTicketingSystemZaven_Shared.Services;
 using Microsoft.AspNetCore.Builder;

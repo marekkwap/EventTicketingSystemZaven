@@ -1,10 +1,10 @@
 using System;
 using Azure.Identity;
-using EventTicketingSystemZaven_CommanProcessor;
-using EventTicketingSystemZaven_CommanProcessor.Models;
-using EventTicketingSystemZaven_CommanProcessor.Services;
-using EventTicketingSystemZaven_CommanProcessor.Services.Interfaces;
-using EventTicketingSystemZaven_CommanProcessor.Services.OperationProcessors;
+using EventTicketingSystemZaven_CommandProcessor;
+using EventTicketingSystemZaven_CommandProcessor.Models;
+using EventTicketingSystemZaven_CommandProcessor.Services;
+using EventTicketingSystemZaven_CommandProcessor.Services.Interfaces;
+using EventTicketingSystemZaven_CommandProcessor.Services.OperationProcessors;
 using EventTicketingSystemZaven_Shared.Models;
 using EventTicketingSystemZaven_Shared.Services;
 using Microsoft.Extensions.Configuration;

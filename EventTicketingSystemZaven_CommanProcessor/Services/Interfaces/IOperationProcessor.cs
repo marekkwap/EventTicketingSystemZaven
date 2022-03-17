@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using EventTicketingSystemZaven_Shared.Models;
 
-namespace EventTicketingSystemZaven_CommanProcessor.Services.Interfaces;
+namespace EventTicketingSystemZaven_CommandProcessor.Services.Interfaces;
 
 public interface IOperationProcessor
 {

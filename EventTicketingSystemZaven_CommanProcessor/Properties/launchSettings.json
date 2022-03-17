@@ -1,6 +1,6 @@
 ﻿{
   "profiles": {
-    "EventTicketingSystemZaven_CommanProcessor": {
+    "EventTicketingSystemZaven_CommandProcessor": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "environmentVariables": {

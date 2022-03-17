@@ -1,4 +1,4 @@
-﻿namespace EventTicketingSystemZaven_CommanProcessor.Models;
+﻿namespace EventTicketingSystemZaven_CommandProcessor.Models;
 
 public class TicketingStorageAccountConfiguration
 {

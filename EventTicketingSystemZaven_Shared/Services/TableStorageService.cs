@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using EventTicketingSystemZaven_CommanProcessor.Models;
+using EventTicketingSystemZaven_CommandProcessor.Models;
 using EventTicketingSystemZaven_Shared.Models;
 using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Extensions.Logging;
