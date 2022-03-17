@@ -1,10 +1,9 @@
-﻿using EventTicketingSystemZaven_Api.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using EventTicketingSystemZaven_Shared.Models;
 
-namespace EventTicketingSystemZaven_Api.Services
+namespace EventTicketingSystemZaven_Api.Services;
+
+public interface IEventPublisher
 {
-    public interface IEventPublisher
-    {
-        Task PublishEvent<T>(EventOperation<T> eventOperation);
-    }
+    Task PublishEvent<T>(EventOperation<T> eventOperation, string partitionId);
 }

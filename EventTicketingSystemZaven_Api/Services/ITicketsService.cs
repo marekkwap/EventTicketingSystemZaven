@@ -1,12 +1,16 @@
-﻿using EventTicketingSystemZaven_Api.Models;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using EventTicketingSystemZaven_Api.Models;
+using EventTicketingSystemZaven_Shared.Models;
 
-namespace EventTicketingSystemZaven_Api.Services
+namespace EventTicketingSystemZaven_Api.Services;
+
+public interface ITicketsService
 {
-    public interface ITicketsService
-    {
-        Task BuyTicket(TicketPurchase ticketPurchase);
-        Task ReturnTicket(TicketPurchase eventModel);
-    }
+    IEnumerable<TicketDto> GetTicketsList(Guid eventId);
+
+    Task BuyTicket(BuyTicketDto ticketPurchase);
+
+    Task ReturnTicket(ReturnTicketDto eventModel);
 }

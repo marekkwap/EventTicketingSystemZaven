@@ -1,40 +1,72 @@
-﻿using EventTicketingSystemZaven_Api.Models;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using EventTicketingSystemZaven_Api.Models;
+using EventTicketingSystemZaven_Shared.Models;
+using EventTicketingSystemZaven_Shared.Services;
 
-namespace EventTicketingSystemZaven_Api.Services
+namespace EventTicketingSystemZaven_Api.Services;
+
+public class TicketsService : ITicketsService
 {
-    public class TicketsService : ITicketsService
+    private readonly IEventPublisher _eventPublisher;
+    private readonly ITableStorageService _tableStorageService;
+
+    public TicketsService(IEventPublisher eventPublisher, ITableStorageService tableStorageService)
     {
-        private readonly IEventPublisher _eventPublisher;
+        _eventPublisher = eventPublisher;
+        _tableStorageService = tableStorageService;
+    }
 
-        public TicketsService(IEventPublisher eventPublisher)
+    public IEnumerable<TicketDto> GetTicketsList(Guid eventId)
+    {
+        var ticketsEntities = _tableStorageService.GetTickets(eventId);
+
+        return ticketsEntities.Select(entity => new TicketDto
         {
-            _eventPublisher = eventPublisher;
-        }
+            TicketId = entity.RowKey,
+            EventId = entity.PartitionKey,
+            FristName = entity.FristName,
+            LastName = entity.LastName,
+            Email = entity.Email,
+        });
+    }
 
-        public async Task BuyTicket(TicketPurchase ticketPurchase)
+    public async Task BuyTicket(BuyTicketDto ticketDto)
+    {
+        var ticketPurchase = new TicketDto
         {
-            var eventOperation = new EventOperation<TicketPurchase>
-            {
-                EventId = ticketPurchase.EventId,
-                OperationType = OperationType.BuyTicket,
-                Payload = ticketPurchase
-            };
+            EventId = ticketDto.EventId,
+            TicketId = Guid.NewGuid().ToString(),
+            FristName = ticketDto.FristName,
+            LastName = ticketDto.LastName,
+            Email = ticketDto.Email,
+        };
 
-            await _eventPublisher.PublishEvent(eventOperation);
-        }
-
-        public async Task ReturnTicket(TicketPurchase eventModel)
+        var eventOperation = new EventOperation<TicketDto>
         {
-            var eventOperation = new EventOperation<TicketPurchase>
-            {
-                EventId = eventModel.EventId,
-                OperationType = OperationType.BuyTicket,
-                Payload = eventModel
-            };
+            OperationType = OperationType.BuyTicket,
+            Payload = ticketPurchase
+        };
 
-            await _eventPublisher.PublishEvent(eventOperation);
-        }
+        await _eventPublisher.PublishEvent(eventOperation, ticketPurchase.EventId.ToString());
+    }
+
+    public async Task ReturnTicket(ReturnTicketDto ticketDto)
+    {
+        var ticketPurchase = new TicketDto
+        {
+            EventId = ticketDto.EventId,
+            TicketId = ticketDto.TicketId
+        };
+
+        var eventOperation = new EventOperation<TicketDto>
+        {
+            OperationType = OperationType.ReturnTicket,
+            Payload = ticketPurchase
+        };
+
+        await _eventPublisher.PublishEvent(eventOperation, ticketPurchase.EventId.ToString());
     }
 }

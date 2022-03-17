@@ -1,43 +1,42 @@
-﻿using Azure.Messaging.EventHubs;
-using Azure.Messaging.EventHubs.Producer;
-using EventTicketingSystemZaven_Api.Models;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Producer;
+using EventTicketingSystemZaven_Shared.Models;
+using Microsoft.Extensions.Logging;
 
-namespace EventTicketingSystemZaven_Api.Services
+namespace EventTicketingSystemZaven_Api.Services;
+
+public class EventPublisher : IEventPublisher, IDisposable
 {
-    public class EventPublisher : IEventPublisher, IDisposable
+    private readonly EventHubProducerClient _producerClient;
+    private readonly ILogger<EventPublisher> _logger;
+
+    public EventPublisher(
+        EventHubConfiguration eventHubConfiguration,
+        ILogger<EventPublisher> logger)
     {
-        private readonly EventHubProducerClient _producerClient;
-        private readonly ILogger<EventPublisher> _logger;
+        _producerClient = new EventHubProducerClient(eventHubConfiguration.TicketingWriteConnectionString, eventHubConfiguration.EventHubName);
+        _logger = logger;
+    }
 
-        public EventPublisher(
-            EventHubConfiguration eventHubConfiguration,
-            ILogger<EventPublisher> logger)
+    public async Task PublishEvent<T>(EventOperation<T> eventOperation, string partitionId)
+    {
+        try
         {
-            _producerClient = new EventHubProducerClient(eventHubConfiguration.ConnectionString, eventHubConfiguration.EventHubName);
-            _logger = logger;
-        }
+            var eventsData = new[] { new EventData(JsonSerializer.Serialize(eventOperation)) };
 
-        public async Task PublishEvent<T>(EventOperation<T> eventOperation)
+            await _producerClient.SendAsync(eventsData, new SendEventOptions { PartitionKey = partitionId });
+        }
+        catch (Exception exception)
         {
-            try
-            {
-                var eventsData = new[] { new EventData(JsonSerializer.Serialize(eventOperation)) };
-
-                await _producerClient.SendAsync(eventsData, new SendEventOptions { PartitionKey = eventOperation.EventId.ToString() });
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError(exception, exception.Message);
-            }
+            _logger.LogError(exception, exception.Message);
         }
+    }
 
-        public async void Dispose()
-        {
-            await _producerClient.DisposeAsync();
-        }
+    public async void Dispose()
+    {
+        await _producerClient.DisposeAsync();
     }
 }

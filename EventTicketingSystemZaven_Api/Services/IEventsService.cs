@@ -1,14 +1,14 @@
-﻿using EventTicketingSystemZaven_Api.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EventTicketingSystemZaven_Api.Models;
+using EventTicketingSystemZaven_Shared.Models;
 
-namespace EventTicketingSystemZaven_Api.Services
+namespace EventTicketingSystemZaven_Api.Services;
+
+public interface IEventsService
 {
-    public interface IEventsService
-    {
-        Task<IEnumerable<Event>> GetEvents(IEnumerable<string> ids);
-        Task CreateEvent(Event eventModel);
-        Task DeleteEvent(Guid id);
-    }
+    IEnumerable<EventDto> GetEvents(IEnumerable<string> ids);
+    Task CreateEvent(CreateEventDto eventModel);
+    Task DeleteEvent(string id);
+    Task AppendTickets(string eventId, int numberOfTickets);
 }
