@@ -1,3 +1,5 @@
+using System;
+using Azure.Identity;
 using EventTicketingSystemZaven_CommandProcessor;
 using EventTicketingSystemZaven_CommandProcessor.Models;
 using EventTicketingSystemZaven_CommandProcessor.Services;
@@ -10,6 +12,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 IHost host = Host.CreateDefaultBuilder(args)
+    .ConfigureAppConfiguration((hostingContext, config) =>
+    {
+        config.AddJsonFile("appsettings.json",
+               optional: true,
+               reloadOnChange: true);
+        var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUri"));
+        config.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
+    })
     .ConfigureServices((context, services) =>
     {
         services.AddApplicationInsightsTelemetryWorkerService();
